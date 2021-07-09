@@ -1,0 +1,211 @@
+{
+  "settings": {
+    "components": {
+      "design": {
+        "id": 1,
+        "name": "Разработка дизайна для web и мобайл версии",
+
+        "hours": null,
+        "section": ["designer"]
+      },
+      "projectPlanning": {
+        "id": 2,
+        "name": "Проработка требований и написание постановок ТЗ",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "outline": {
+        "id": 3,
+        "name": "Адаптивная и мобильная web верстка",
+
+        "hours": null,
+        "section": ["analyst", "frontDeveloper"]
+      },
+      "dataBase": {
+        "id": 4,
+        "name": "Разработка БД",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "objectModel": {
+        "id": 5,
+        "name": "Разработка объектной модели",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "authorization": {
+        "id": 6,
+        "name": "Компонент функционала регистрации и авторизации",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "reference": {
+        "id": 7,
+        "name": "Компонент рекомендаций",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "periodicals": {
+        "id": 8,
+        "name": "Компонент периодики",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "userCatalog": {
+        "id": 9,
+        "name": "Компонент каталога пользователя",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "rss": {
+        "id": 10,
+        "name": "Компонент RSS",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "rssParsing": {
+        "id": 11,
+        "name": "Компонент парсинга созданных RSS Atom",
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "search": {
+        "id": 12,
+        "name": "Компонент поиска",
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "multilanguage": {
+        "id": 13,
+        "name": "Многоязычность сайта",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "extractor": {
+        "id": 14,
+        "name": "Компонент правил извлечения данных",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "notification": {
+        "id": 15,
+        "name": "Модуль уведомлений",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "adminPanel": {
+        "id": 16,
+        "name": "Административная панель",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "devOps": {
+        "id": 17,
+        "name": "DevOps работы (Настройка и установка контуров)",
+
+        "hours": null,
+        "section": ["analyst"]
+      },
+      "debugging": {
+        "id": 18,
+        "name": "Отладка",
+
+        "hours": null,
+        "section": ["analyst"]
+      }
+    },
+    "platform": {
+      "mobile": [],
+      "desktop": []
+    },
+    "types": {
+      "info": {
+        "id": 1,
+        "name": "Промо сайт",
+        "options": ["design", "outline"]
+      },
+      "ecom": {
+        "id": 2,
+        "name": "Онлайн магазин",
+        "options": ["design", "outline"]
+      },
+      "erpCrm": {
+        "id": 3,
+        "name": "Системы  CRM / ERP",
+        "options": ["design", "outline"]
+      },
+      "social": {
+        "id": 4,
+        "name": "Социальная сеть",
+        "options": []
+      },
+      "loyality": {
+        "id": 5,
+        "name": "Приложение системы лояльности",
+        "options": []
+      },
+      "delivery": {
+        "id": 6,
+        "name": "Приложение доставки",
+        "options": []
+      }
+    },
+    "section": {
+      "designer": {
+        "name": "Дизайнер",
+        "defaultRate": 1800
+      },
+      "analyst": {
+        "name": "Аналитик",
+        "defaultRate": 2100
+      },
+      "architect": {
+        "name": "Архитектор",
+        "defaultRate": 2000
+      },
+      "backDeveloper": {
+        "name": "Backend Разработчик",
+        "defaultRate": 2000
+      },
+      "frontDeveloper": {
+        "name": "Fronted разработчик",
+        "defaultRate": 2000
+      },
+      "mobileDeveloper": {
+        "name": "Мобильный разработчик",
+        "defaultRate": 2000
+      },
+      "teamLead": {
+        "name": "Руководитель проекта",
+        "defaultRate": 2000
+      }
+    },
+    "tasks": [{
+        "value": "Задача 1",
+        "label": "Option1"
+      },
+      {
+        "value": "Option2",
+        "label": "Option2",
+        "button": "Взять в работу"
+      },
+      {
+        "value": "Option3",
+        "label": "Option3",
+        "button": "push me"
+      }
+    ]
+  }
+}
