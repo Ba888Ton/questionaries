@@ -217,6 +217,8 @@
         "button": "push me",
         "type": "erpCrm"
       }
-    ]
+    ],
+    "questions":[],
+    "answers":[]
   }
 }
