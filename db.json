@@ -1,6 +1,6 @@
 {
   "settings": {
-    "components": {
+    "options": {
       "design": {
         "id": 1,
         "name": "Разработка дизайна для web и мобайл версии",
@@ -13,7 +13,7 @@
         "name": "Проработка требований и написание постановок ТЗ",
 
         "hours": null,
-        "section": ["analyst"]
+        "section": ["teamLead"]
       },
       "outline": {
         "id": 3,
@@ -81,7 +81,7 @@
         "id": 12,
         "name": "Компонент поиска",
         "hours": null,
-        "section": ["analyst"]
+        "section": ["architect"]
       },
       "multilanguage": {
         "id": 13,
@@ -134,7 +134,7 @@
       "info": {
         "id": 1,
         "name": "Промо сайт",
-        "options": ["design", "outline"]
+        "options": ["projectPlanning", "search"]
       },
       "ecom": {
         "id": 2,
@@ -144,7 +144,7 @@
       "erpCrm": {
         "id": 3,
         "name": "Системы  CRM / ERP",
-        "options": ["design", "outline"]
+        "options": ["search", "outline"]
       },
       "social": {
         "id": 4,
@@ -194,17 +194,28 @@
     },
     "tasks": [{
         "value": "Задача 1",
-        "label": "Option1"
+        "label": "Option 1",
+        "type": "ecom",
+        "answers": {
+          "111": "a",
+          "222": "b",
+          "333": "c",
+          "444": "a",
+          "555": "b",
+          "666": "c"
+        }
       },
       {
-        "value": "Option2",
-        "label": "Option2",
-        "button": "Взять в работу"
+        "value": "Задача 2",
+        "label": "Option 2",
+        "button": "Взять в работу",
+        "type": "info"
       },
       {
-        "value": "Option3",
-        "label": "Option3",
-        "button": "push me"
+        "value": "Задача 3",
+        "label": "Option 3",
+        "button": "push me",
+        "type": "erpCrm"
       }
     ]
   }

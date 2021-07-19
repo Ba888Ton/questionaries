@@ -2,19 +2,19 @@
   <el-main>
     <h1>Поступившие заявки</h1>
     <el-row :gutter="12">
-      <task-card v-for="card in tasks" :key="card.value">
+      <task-card v-for="card in params.tasks" :key="card.value">
         <template v-slot:title>
           <h3>{{ card.value }}</h3>
         </template>
         <div>
-          <el-button style="margin-top: 12px">Взять в работу</el-button>
+          <el-button style="margin-top: 12px" >Взять в работу</el-button>
         </div>
       </task-card>
     </el-row>
 
     <el-row :gutter="12">
       <task-table
-        v-if="params"
+        v-if="current_task"
         :components="components"
       >
       </task-table>
@@ -32,19 +32,20 @@ export default {
   },
   computed: {
     components() {
-      const componentsList = this.params.types[this.current_type].options;
-      const componentsObject = componentsList.reduce((obj, key) => {
+      const optionsList = this.params.types[this.current_type].options;
+      debugger
+      const optionsObject = optionsList.reduce((obj, key) => {
           obj[key] = this.params.components[key]
           return obj;
         }, {});
-        for (const key in componentsObject) {
-          let newSection = componentsObject[key].section.reduce((arr, key) => {
+        for (const key in optionsObject) {
+          let newSection = optionsObject[key].section.reduce((arr, key) => {
             arr.push(this.params.section[key])
             return arr
           },[])
-          componentsObject[key].section = newSection
+          optionsObject[key].section = newSection
         }
-      return componentsObject;
+      return optionsObject;
     },
   },
   methods: {
@@ -61,6 +62,7 @@ export default {
     return {
       params: "",
       current_type: "ecom",
+      current_task: "",
       show: true,
       errors: [],
       email: "",
