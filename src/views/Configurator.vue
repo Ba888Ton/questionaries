@@ -119,11 +119,11 @@ export default {
 };
 </script>
 <style lang="scss">
-.transition-box {
-  background: #fff;
-}
-.transition-box2 {
-  background: $secondary;
-}
+  .transition-box {
+    background: #fff;
+  }
+  .transition-box2 {
+    background: $secondary;
+  }
 </style>
    

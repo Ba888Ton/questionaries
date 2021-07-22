@@ -218,7 +218,327 @@
         "type": "erpCrm"
       }
     ],
-    "questions":[],
-    "answers":[]
-  }
+    "questions": [],
+    "answers": []
+  },
+  "answers_table": [{
+      "id_answer": "1",
+      "answer_value": "desktop",
+      "next_question": "2",
+      "id_question": "1"
+    },
+    {
+      "id_answer": "2",
+      "answer_value": "mobile",
+      "next_question": "3",
+      "id_question": "1"
+    },
+    {
+      "id_answer": "3",
+      "answer_value": "delivery",
+      "next_question": "4",
+      "id_question": "3"
+    },
+    {
+      "id_answer": "4",
+      "answer_value": "loyality",
+      "next_question": "5",
+      "id_question": "3"
+    },
+    {
+      "id_answer": "5",
+      "answer_value": "пиццу",
+      "next_question": "6",
+      "id_question": "4"
+    },
+    {
+      "id_answer": "6",
+      "answer_value": "продукты",
+      "next_question": "6",
+      "id_question": "4"
+    },
+    {
+      "id_answer": "7",
+      "answer_value": "стройматериалы",
+      "next_question": "6",
+      "id_question": "4"
+    },
+    {
+      "id_answer": "8",
+      "answer_value": "Ресторан",
+      "next_question": "6",
+      "id_question": "5"
+    },
+    {
+      "id_answer": "9",
+      "answer_value": "Магазин",
+      "next_question": "6",
+      "id_question": "5"
+    },
+    {
+      "id_answer": "10",
+      "answer_value": "Химчистка",
+      "next_question": "6",
+      "id_question": "5"
+    },
+    {
+      "id_answer": "11",
+      "answer_value": "до 200к",
+      "next_question": "12",
+      "id_question": "6"
+    },
+    {
+      "id_answer": "12",
+      "answer_value": "до 500к",
+      "next_question": "12",
+      "id_question": "6"
+    },
+    {
+      "id_answer": "13",
+      "answer_value": "от 1кк",
+      "next_question": "12",
+      "id_question": "6"
+    },
+    {
+      "id_answer": "14",
+      "answer_value": "Промо-сайт",
+      "next_question": "7",
+      "id_question": "2"
+    },
+    {
+      "id_answer": "15",
+      "answer_value": "CRM",
+      "next_question": "9",
+      "id_question": "2"
+    },
+    {
+      "id_answer": "16",
+      "answer_value": "Корпоративная система  ERP",
+      "next_question": "10",
+      "id_question": "2"
+    },
+    {
+      "id_answer": "17",
+      "answer_value": "Соц.сеть",
+      "next_question": "11",
+      "id_question": "2"
+    },
+    {
+      "id_answer": "18",
+      "answer_value": "Динамический лэндинг",
+      "next_question": "15",
+      "id_question": "7"
+    },
+    {
+      "id_answer": "19",
+      "answer_value": "Админ панель",
+      "next_question": "15",
+      "id_question": "7"
+    },
+    {
+      "id_answer": "20",
+      "answer_value": "Личный кабинет пользователя",
+      "next_question": "15",
+      "id_question": "7"
+    },
+    {
+      "id_answer": "21",
+      "answer_value": "Панель менеджера",
+      "next_question": "12",
+      "id_question": "9"
+    },
+    {
+      "id_answer": "22",
+      "answer_value": "Панель НОПа",
+      "next_question": "12",
+      "id_question": "9"
+    },
+    {
+      "id_answer": "23",
+      "answer_value": "Раздел Аналитики",
+      "next_question": "12",
+      "id_question": "9"
+    },
+    {
+      "id_answer": "24",
+      "answer_value": "Склад",
+      "next_question": "12",
+      "id_question": "10"
+    },
+    {
+      "id_answer": "25",
+      "answer_value": "Производство",
+      "next_question": "12",
+      "id_question": "10"
+    },
+    {
+      "id_answer": "26",
+      "answer_value": "Аналитика",
+      "next_question": "12",
+      "id_question": "10"
+    },
+    {
+      "id_answer": "27",
+      "answer_value": "личный кабинет пользователя",
+      "next_question": "12",
+      "id_question": "11"
+    },
+    {
+      "id_answer": "28",
+      "answer_value": "приватный чат",
+      "next_question": "12",
+      "id_question": "11"
+    },
+    {
+      "id_answer": "29",
+      "answer_value": "рубрики",
+      "next_question": "12",
+      "id_question": "11"
+    },
+    {
+      "id_answer": "30",
+      "answer_value": "1С предприятие",
+      "next_question": "13",
+      "id_question": "12"
+    },
+    {
+      "id_answer": "31",
+      "answer_value": "Битрикс",
+      "next_question": "13",
+      "id_question": "12"
+    },
+    {
+      "id_answer": "32",
+      "answer_value": "Корпоративная CRM",
+      "next_question": "13",
+      "id_question": "12"
+    },
+    {
+      "id_answer": "33",
+      "answer_value": "WordPress",
+      "next_question": "14",
+      "id_question": "13"
+    },
+    {
+      "id_answer": "34",
+      "answer_value": "Joomla",
+      "next_question": "14",
+      "id_question": "13"
+    },
+    {
+      "id_answer": "35",
+      "answer_value": "October",
+      "next_question": "14",
+      "id_question": "13"
+    },
+    {
+      "id_answer": "36",
+      "answer_value": "Есть свой дизайн",
+      "next_question": "15",
+      "id_question": "14"
+    },
+    {
+      "id_answer": "37",
+      "answer_value": "Нужен дизайн с нуля",
+      "next_question": "15",
+      "id_question": "14"
+    },
+    {
+      "id_answer": "38",
+      "answer_value": "Есть референсы как хотим видеть",
+      "next_question": "15",
+      "id_question": "14"
+    }
+  ],
+  "questions_table": [{
+      "id_question": "1",
+      "name": "какая платформа",
+      "initial": "true",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "2",
+      "name": "тип приложения web",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "3",
+      "name": "тип приложения mobile",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "4",
+      "name": "Что будем доставлять?",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "5",
+      "name": "для кого программа лояльности?",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "6",
+      "name": "Бюджет мероприятия?",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "7",
+      "name": "Какие разделы вам необходимы?",
+      "initial": "",
+      "multi_choise": "true"
+    },
+    {
+      "id_question": "8",
+      "name": "",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "9",
+      "name": "Какие разделы вам необходимы?",
+      "initial": "",
+      "multi_choise": "true"
+    },
+    {
+      "id_question": "10",
+      "name": "Какие разделы вам необходимы?",
+      "initial": "",
+      "multi_choise": "true"
+    },
+    {
+      "id_question": "11",
+      "name": "Какие разделы вам необходимы?",
+      "initial": "",
+      "multi_choise": "true"
+    },
+    {
+      "id_question": "12",
+      "name": "необходимость интеграции сайта с облачными сервисами",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "13",
+      "name": "какая CMS?",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "14",
+      "name": "Дизайн?",
+      "initial": "",
+      "multi_choise": ""
+    },
+    {
+      "id_question": "15",
+      "name": "укажите Ваши контактные данные",
+      "initial": "",
+      "multi_choise": ""
+    }
+  ]
 }

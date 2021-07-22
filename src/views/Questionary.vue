@@ -3,111 +3,93 @@
     <h1>Пройдите опрос и мы начнем работать</h1>
     <div style="margin: 20px">
       <transition name="el-fade-in-linear">
-        <div v-show="!form.platform" class="transition-box">
-          <h4>Какая платформа?</h4>
-          <el-radio-group v-model="form.platform">
-            <template v-for="item in cases.platform">
-              <el-radio :label="item" :key="item" border>{{ item }}</el-radio>
-            </template>
-          </el-radio-group>
-        </div>
-      </transition>
-      <transition name="el-fade-in-linear">
-        <div v-show="form.platform && form.options" class="transition-box">
-          <h4>Дополнительные вопросы</h4>
-          <template v-for="(question, id) in cases[form.platform + 'Questions']">
-            <transition name="el-fade-in-linear" :key="id">
-              <div
-                v-for="(array, name) in question"
-                :key="array.id"
-                v-show="form.options[name] === ''"
-              >
-                <h4>{{ name }} </h4>
-                <el-radio-group v-model="form.options[name]" :key="array.id">
-                  <el-radio
-                    v-for="item in array"
-                    :label="item"
+        <el-col :span="24">
+          <div class="grid-content bg-purple-dark">
+            <task-card
+              v-for="question in questions"
+              :key="question.id_question"
+              style="margin-top: 20px"
+              class="el-col-24"
+            >
+              <h4>{{ question.name }}</h4>
+              <template v-if="question.multi_choise">
+                <el-checkbox-group
+                  @change="(e) => (isChecked = e.length ? true : false)"
+                  v-model="checkList"
+                  style="margin-top: 20px; margin-bottom: 20px"
+                >
+                  <el-checkbox
+                    v-for="option in current_question(question.id_question)"
+                    :label="option"
+                    :key="option.id"
                     border
-                    :key="item.id"
                   >
-                    {{ item }}
-                  </el-radio>
-                </el-radio-group>
-              </div>
-            </transition>
-          </template>
-        </div>
+                    {{ option.answer_value }}
+                  </el-checkbox>
+                </el-checkbox-group>
+                <el-button class="btn btn-primary" :disabled="!isChecked"
+                  >ertertert</el-button
+                >
+              </template>
+              <el-radio-group
+                v-else
+                v-model="checkList"
+                style="margin-top: 20px"
+              >
+                <el-radio
+                  v-for="option in current_question(question.id_question)"
+                  :label="option"
+                  :key="option.id"
+                  border
+                >
+                  {{ option.answer_value }}
+                </el-radio>
+              </el-radio-group>
+            </task-card>
+          </div>
+        </el-col>
       </transition>
     </div>
   </el-main>
 </template>
 <script>
-import { nanoid } from "nanoid";
+import TaskCard from "../components/TaskCard.vue";
 export default {
+  name: "Questionary",
+  components: {
+    TaskCard,
+  },
+  mounted() {
+    this.getParams();
+  },
   methods: {
-    nextStep() {
-      if (this.active++ > 4) this.active = 0;
+    current_question(id) {
+      return this.answers.filter((item) => item.id_question === id);
+    },
+    async getParams() {
+      try {
+        const answers = await this.$http.get(
+          "http://localhost:3000/answers_table"
+        );
+        const questions = await this.$http.get(
+          "http://localhost:3000/questions_table"
+        );
+        this.answers = answers.data;
+        this.questions = questions.data;
+      } catch (error) {
+        console.log("questionry error", error.response);
+      }
     },
   },
   data() {
     return {
-      show: true,
+      isChecked: false,
+      checkList: [],
       errors: [],
-      email: "",
-      input_platform: "",
-      input: "",
-      active: 1,
-      radio1: "",
-      radio2: "1",
-      // percentage: 80,
-      typeValue: "",
-      options: [
-        {
-          value: "Option1",
-          label: "Option1",
-        },
-        {
-          value: "Option2",
-          label: "Option2",
-        },
-        {
-          value: "Option3",
-          label: "Option3",
-        },
-        {
-          value: "Option4",
-          label: "Option4",
-        },
-        {
-          value: "Option5",
-          label: "Option5",
-        },
-      ],
-      form: {
-        platform: "",
-        options: { type: "", vendor: "", features: "" },
-        settings: [],
-      },
-      cases: {
-        platform: ["mobile", "desktop"],
-        mobileQuestions: [
-          { type: ["loyality", "delivery"] },
-          { vendor: ["android", "ios"] },
-        ],
-        desktopQuestions: [
-          { type: ["ecom", "info", "crm", "erp", "bi"] },
-          {
-            features: [
-              "admin_panel",
-              "rss",
-              "data_base",
-              "other_module",
-              "user_account",
-            ],
-          },
-        ],
-        settings: ["cheap", "good", "fast"],
-      },
+      questions: "",
+      answers: "",
+      form: [],
+      current_card: null,
     };
   },
 };
