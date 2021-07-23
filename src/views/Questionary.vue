@@ -5,47 +5,53 @@
       <transition name="el-fade-in-linear">
         <el-col :span="24">
           <div class="grid-content bg-purple-dark">
-            <task-card
+            <div
               v-for="question in questions"
               :key="question.id_question"
-              style="margin-top: 20px"
-              class="el-col-24"
             >
-              <h4>{{ question.name }}</h4>
-              <template v-if="question.multi_choise">
-                <el-checkbox-group
-                  @change="(e) => (isChecked = e.length ? true : false)"
-                  v-model="checkList"
-                  style="margin-top: 20px; margin-bottom: 20px"
+              <task-card
+                v-if="currentCard === +question.id_question"
+                style="margin-top: 20px"
+                class="el-col-24"
+              >
+                <h4>{{ question.name }}</h4>
+                <template v-if="question.multi_choise">
+                  <el-checkbox-group
+                    @change="(e) => (isChecked = e.length ? true : false)"
+                    v-model="checkList[question.name]"
+                    style="margin-top: 20px; margin-bottom: 20px"
+                  >
+<!-- вот тут магия v-model не работает как в радио баттон -->
+                    <el-checkbox
+                      v-for="option in currentQuestion(question.id_question)"
+                      :label="option"
+                      :key="option.id"
+                      border
+                    >
+                      {{ option.answer_value }}
+                    </el-checkbox>
+                  </el-checkbox-group>
+                  <el-button class="btn btn-primary" :disabled="!isChecked"
+                    >ertertert</el-button
+                  >
+                </template>
+                <el-radio-group
+                  @change="(e) => isSelected(e)"
+                  v-else
+                  v-model="checkList[question.name]"
+                  style="margin-top: 20px"
                 >
-                  <el-checkbox
-                    v-for="option in current_question(question.id_question)"
+                  <el-radio
+                    v-for="option in currentQuestion(question.id_question)"
                     :label="option"
                     :key="option.id"
                     border
                   >
                     {{ option.answer_value }}
-                  </el-checkbox>
-                </el-checkbox-group>
-                <el-button class="btn btn-primary" :disabled="!isChecked"
-                  >ertertert</el-button
-                >
-              </template>
-              <el-radio-group
-                v-else
-                v-model="checkList"
-                style="margin-top: 20px"
-              >
-                <el-radio
-                  v-for="option in current_question(question.id_question)"
-                  :label="option"
-                  :key="option.id"
-                  border
-                >
-                  {{ option.answer_value }}
-                </el-radio>
-              </el-radio-group>
-            </task-card>
+                  </el-radio>
+                </el-radio-group>
+              </task-card>
+            </div>
           </div>
         </el-col>
       </transition>
@@ -63,7 +69,11 @@ export default {
     this.getParams();
   },
   methods: {
-    current_question(id) {
+    isSelected(e) {
+      console.log(e);
+      this.currentCard = +e.next_question
+    },
+    currentQuestion(id) {
       return this.answers.filter((item) => item.id_question === id);
     },
     async getParams() {
@@ -84,12 +94,13 @@ export default {
   data() {
     return {
       isChecked: false,
-      checkList: [],
+      handleChange: "",
+      checkList: {},
       errors: [],
       questions: "",
       answers: "",
       form: [],
-      current_card: null,
+      currentCard: 1,
     };
   },
 };

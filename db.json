@@ -493,12 +493,6 @@
       "multi_choise": "true"
     },
     {
-      "id_question": "8",
-      "name": "",
-      "initial": "",
-      "multi_choise": ""
-    },
-    {
       "id_question": "9",
       "name": "Какие разделы вам необходимы?",
       "initial": "",
