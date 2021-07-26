@@ -33,7 +33,6 @@ export default {
   computed: {
     components() {
       const optionsList = this.params.types[this.current_type].options;
-      debugger
       const optionsObject = optionsList.reduce((obj, key) => {
           obj[key] = this.params.components[key]
           return obj;

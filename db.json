@@ -4,126 +4,147 @@
       "design": {
         "id": 1,
         "name": "Разработка дизайна для web и мобайл версии",
-
         "hours": null,
-        "section": ["designer"]
+        "section": [
+          "designer"
+        ]
       },
       "projectPlanning": {
         "id": 2,
         "name": "Проработка требований и написание постановок ТЗ",
-
         "hours": null,
-        "section": ["teamLead"]
+        "section": [
+          "teamLead"
+        ]
       },
       "outline": {
         "id": 3,
         "name": "Адаптивная и мобильная web верстка",
-
         "hours": null,
-        "section": ["analyst", "frontDeveloper"]
+        "section": [
+          "analyst",
+          "frontDeveloper"
+        ]
       },
       "dataBase": {
         "id": 4,
         "name": "Разработка БД",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "objectModel": {
         "id": 5,
         "name": "Разработка объектной модели",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "authorization": {
         "id": 6,
         "name": "Компонент функционала регистрации и авторизации",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "reference": {
         "id": 7,
         "name": "Компонент рекомендаций",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "periodicals": {
         "id": 8,
         "name": "Компонент периодики",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "userCatalog": {
         "id": 9,
         "name": "Компонент каталога пользователя",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "rss": {
         "id": 10,
         "name": "Компонент RSS",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "rssParsing": {
         "id": 11,
         "name": "Компонент парсинга созданных RSS Atom",
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "search": {
         "id": 12,
         "name": "Компонент поиска",
         "hours": null,
-        "section": ["architect"]
+        "section": [
+          "architect"
+        ]
       },
       "multilanguage": {
         "id": 13,
         "name": "Многоязычность сайта",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "extractor": {
         "id": 14,
         "name": "Компонент правил извлечения данных",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "notification": {
         "id": 15,
         "name": "Модуль уведомлений",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "adminPanel": {
         "id": 16,
         "name": "Административная панель",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "devOps": {
         "id": 17,
         "name": "DevOps работы (Настройка и установка контуров)",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       },
       "debugging": {
         "id": 18,
         "name": "Отладка",
-
         "hours": null,
-        "section": ["analyst"]
+        "section": [
+          "analyst"
+        ]
       }
     },
     "platform": {
@@ -134,17 +155,26 @@
       "info": {
         "id": 1,
         "name": "Промо сайт",
-        "options": ["projectPlanning", "search"]
+        "options": [
+          "projectPlanning",
+          "search"
+        ]
       },
       "ecom": {
         "id": 2,
         "name": "Онлайн магазин",
-        "options": ["design", "outline"]
+        "options": [
+          "design",
+          "outline"
+        ]
       },
       "erpCrm": {
         "id": 3,
         "name": "Системы  CRM / ERP",
-        "options": ["search", "outline"]
+        "options": [
+          "search",
+          "outline"
+        ]
       },
       "social": {
         "id": 4,
@@ -192,7 +222,8 @@
         "defaultRate": 2000
       }
     },
-    "tasks": [{
+    "tasks": [
+      {
         "value": "Задача 1",
         "label": "Option 1",
         "type": "ecom",
@@ -221,7 +252,8 @@
     "questions": [],
     "answers": []
   },
-  "answers_table": [{
+  "answers_table": [
+    {
       "id_answer": "1",
       "answer_value": "desktop",
       "next_question": "2",
@@ -344,55 +376,55 @@
     {
       "id_answer": "21",
       "answer_value": "Панель менеджера",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "9"
     },
     {
       "id_answer": "22",
       "answer_value": "Панель НОПа",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "9"
     },
     {
       "id_answer": "23",
       "answer_value": "Раздел Аналитики",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "9"
     },
     {
       "id_answer": "24",
       "answer_value": "Склад",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "10"
     },
     {
       "id_answer": "25",
       "answer_value": "Производство",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "10"
     },
     {
       "id_answer": "26",
       "answer_value": "Аналитика",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "10"
     },
     {
       "id_answer": "27",
       "answer_value": "личный кабинет пользователя",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "11"
     },
     {
       "id_answer": "28",
       "answer_value": "приватный чат",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "11"
     },
     {
       "id_answer": "29",
       "answer_value": "рубрики",
-      "next_question": "12",
+      "next_question": "6",
       "id_question": "11"
     },
     {
@@ -450,7 +482,8 @@
       "id_question": "14"
     }
   ],
-  "questions_table": [{
+  "questions_table": [
+    {
       "id_question": "1",
       "name": "какая платформа",
       "initial": "true",
@@ -533,6 +566,153 @@
       "name": "укажите Ваши контактные данные",
       "initial": "",
       "multi_choise": ""
+    }
+  ],
+  "completed_forms": [
+    {
+      "contacts": {
+        "name": "asdasd",
+        "surname": "asdasd",
+        "companyName": "asdasd",
+        "phone": "4324234324",
+        "desc": ""
+      },
+      "answers": [
+        {
+          "id_answer": "1",
+          "answer_value": "desktop",
+          "next_question": "2",
+          "id_question": "1"
+        },
+        {
+          "id_answer": "15",
+          "answer_value": "CRM",
+          "next_question": "9",
+          "id_question": "2"
+        },
+        [
+          {
+            "id_answer": "22",
+            "answer_value": "Панель НОПа",
+            "next_question": "6",
+            "id_question": "9"
+          }
+        ],
+        {
+          "id_answer": "12",
+          "answer_value": "до 500к",
+          "next_question": "12",
+          "id_question": "6"
+        },
+        {
+          "id_answer": "31",
+          "answer_value": "Битрикс",
+          "next_question": "13",
+          "id_question": "12"
+        },
+        {
+          "id_answer": "34",
+          "answer_value": "Joomla",
+          "next_question": "14",
+          "id_question": "13"
+        },
+        {
+          "id_answer": "36",
+          "answer_value": "Есть свой дизайн",
+          "next_question": "15",
+          "id_question": "14"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "contacts": {
+        "name": "qweqwe",
+        "surname": "qweqwe",
+        "companyName": "qweqwe",
+        "phone": "4324234",
+        "desc": ""
+      },
+      "answers": [
+        {
+          "id_answer": "1",
+          "answer_value": "desktop",
+          "next_question": "2",
+          "id_question": "1"
+        },
+        {
+          "id_answer": "15",
+          "answer_value": "CRM",
+          "next_question": "9",
+          "id_question": "2"
+        },
+        [
+          {
+            "id_answer": "22",
+            "answer_value": "Панель НОПа",
+            "next_question": "6",
+            "id_question": "9"
+          }
+        ],
+        {
+          "id_answer": "12",
+          "answer_value": "до 500к",
+          "next_question": "12",
+          "id_question": "6"
+        },
+        {
+          "id_answer": "31",
+          "answer_value": "Битрикс",
+          "next_question": "13",
+          "id_question": "12"
+        },
+        {
+          "id_answer": "34",
+          "answer_value": "Joomla",
+          "next_question": "14",
+          "id_question": "13"
+        },
+        {
+          "id_answer": "36",
+          "answer_value": "Есть свой дизайн",
+          "next_question": "15",
+          "id_question": "14"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "contacts": {
+        "name": "qweqwe",
+        "surname": "qweqwe",
+        "companyName": "qweqweqwe",
+        "phone": 3423,
+        "desc": ""
+      },
+      "answers": [],
+      "id": 3
+    },
+    {
+      "contacts": {
+        "name": "qweqwe",
+        "surname": "qweqwe",
+        "companyName": "qweqwe",
+        "phone": 34234234,
+        "desc": ""
+      },
+      "answers": [],
+      "id": 4
+    },
+    {
+      "contacts": {
+        "name": "dfsafsdf",
+        "surname": "sdfsdf",
+        "companyName": "sdfsdf",
+        "phone": 543535,
+        "desc": ""
+      },
+      "answers": [],
+      "id": 5
     }
   ]
 }

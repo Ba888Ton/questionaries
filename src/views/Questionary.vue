@@ -5,10 +5,7 @@
       <transition name="el-fade-in-linear">
         <el-col :span="24">
           <div class="grid-content bg-purple-dark">
-            <div
-              v-for="question in questions"
-              :key="question.id_question"
-            >
+            <div v-for="question in questions" :key="question.id_question">
               <task-card
                 v-if="currentCard === +question.id_question"
                 style="margin-top: 20px"
@@ -17,11 +14,9 @@
                 <h4>{{ question.name }}</h4>
                 <template v-if="question.multi_choise">
                   <el-checkbox-group
-                    @change="(e) => (isChecked = e.length ? true : false)"
-                    v-model="checkList[question.name]"
+                    v-model="optionsList"
                     style="margin-top: 20px; margin-bottom: 20px"
                   >
-<!-- вот тут магия v-model не работает как в радио баттон -->
                     <el-checkbox
                       v-for="option in currentQuestion(question.id_question)"
                       :label="option"
@@ -31,14 +26,18 @@
                       {{ option.answer_value }}
                     </el-checkbox>
                   </el-checkbox-group>
-                  <el-button class="btn btn-primary" :disabled="!isChecked"
-                    >ertertert</el-button
+                  <el-button
+                    class="btn btn-primary"
+                    @click="inputAnswer"
+                    :disabled="!isChecked"
                   >
+                    ertertert
+                  </el-button>
                 </template>
                 <el-radio-group
-                  @change="(e) => isSelected(e)"
+                  @change="inputAnswer"
                   v-else
-                  v-model="checkList[question.name]"
+                  v-model="optionsList"
                   style="margin-top: 20px"
                 >
                   <el-radio
@@ -50,28 +49,46 @@
                     {{ option.answer_value }}
                   </el-radio>
                 </el-radio-group>
+                <ClientForm 
+                  v-if="question.id_question === '15'"
+                  @contacts-form-submit="contactsFormSubmit($event)"
+                />
+                <!-- может идентификатор формы передавать вместо init -->
               </task-card>
             </div>
           </div>
         </el-col>
       </transition>
     </div>
+    {{message}}
   </el-main>
 </template>
 <script>
 import TaskCard from "../components/TaskCard.vue";
+import ClientForm from "@/components/ClientForm.vue"
+
 export default {
   name: "Questionary",
   components: {
-    TaskCard,
+    TaskCard, ClientForm
   },
   mounted() {
     this.getParams();
   },
+  computed: {
+    isChecked() {
+      return this.optionsList.length ? true : false
+    },
+  },
   methods: {
-    isSelected(e) {
-      console.log(e);
-      this.currentCard = +e.next_question
+    inputAnswer() {
+      // тут вот переписать
+      const next = this.optionsList && this.optionsList.next_question
+        ? this.optionsList.next_question
+        : this.optionsList[0].next_question;
+      this.checkList.push(this.optionsList);
+      this.optionsList = [];
+      this.currentCard = +next;
     },
     currentQuestion(id) {
       return this.answers.filter((item) => item.id_question === id);
@@ -90,17 +107,35 @@ export default {
         console.log("questionry error", error.response);
       }
     },
+    async contactsFormSubmit(form) {
+      try {
+        const data = {contacts: form, answers: this.checkList}
+        const postForm = await this.$http.post("http://localhost:3000/completed_forms", data)
+        .then(e => this.message = 'Успешно !')
+        this.currentCard += 1
+        setTimeout(() => {
+          this.message = ''
+          setTimeout(() => {
+            this.$route.push('/')
+          }, 1000);
+        }, 3000);
+      } catch (error) {
+        this.message = 'Что-то пошло не так'
+        throw new Error(error)
+      }
+    }
   },
   data() {
     return {
-      isChecked: false,
       handleChange: "",
-      checkList: {},
+      checkList: [],
+      optionsList: [],
       errors: [],
       questions: "",
       answers: "",
-      form: [],
-      currentCard: 1,
+      showForm: false,
+      currentCard: 15,
+      message: ''
     };
   },
 };
