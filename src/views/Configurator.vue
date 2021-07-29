@@ -1,18 +1,25 @@
 <template>
   <el-main>
     <h1>Поступившие заявки</h1>
-    <el-row :gutter="12" class="infinite-list-wrapper card-wrapper" style="overflow:auto; max-height: 400px">
+    <p v-if="!tasks.length">пока ничего нет ...</p>
+    <el-row
+      :gutter="12"
+      class="infinite-list-wrapper card-wrapper"
+      style="overflow: auto; max-height: 400px"
+    >
       <task-card v-for="card in tasks" :key="card.id">
         <template v-slot:title>
-          <h3> Заявка № {{card.id}}</h3>
+          <h3>Заявка № {{ card.id }}</h3>
         </template>
         <div>
-          <el-button style="margin-top: 12px" @click="() => selectTask(card)">Взять в работу</el-button>
+          <el-button style="margin-top: 12px" @click="() => selectTask(card)"
+            >Взять в работу</el-button
+          >
         </div>
       </task-card>
     </el-row>
     <el-row :gutter="12">
-      <task-table v-if="currentTask" :components="currentTask"> </task-table>
+      <TaskTable v-if="currentTask" :components="currentTask" :id="currentId" />
     </el-row>
   </el-main>
 </template>
@@ -27,65 +34,95 @@ export default {
   },
   computed: {
     currentType() {
-      return this.params.types[this.currentTask.jjjj].option
-    }
+      return this.params.types[this.currentTask.jjjj].option;
+    },
   },
   methods: {
     async getParams() {
       try {
         const settings = await this.$http.get("http://localhost:3000/settings");
-        const tasks = await this.$http.get("http://localhost:3000/completed_forms");
+        const tasks = await this.$http.get(
+          "http://localhost:3000/completed_forms"
+        );
         this.params = settings.data;
-        this.tasks = tasks.data
+        this.tasks = tasks.data;
       } catch (error) {
         console.log("components error", error.response);
       }
     },
     selectTask(task) {
-      const values = task.answers.map(answer => {
+      const questionAnswerPairs = task.answers.map((answer) => {
         if (answer instanceof Array) {
-          const valuesArray = answer.map(item => item.id_answer)
-          return valuesArray
+          const valuesArray = answer.map((item) => [
+            item.id_question,
+            item.id_answer,
+          ]);
+          return [...valuesArray];
         }
-        return answer.id_answer
+        return [answer.id_question, answer.id_answer];
       });
-      console.log(values);
-      debugger
-      // values.forEach(item => {
-      //   switch (item) {
-      //     case 'desktop':
-            
-      //       break;
-      //     case 'mobile':
-            
-      //       break;
-        
-      //     default:
-      //       break;
-      //   }
-      // });
-      this.currentTask = {}
-      // const optionsList = this.params.types[this.current_type].options
-      const optionsList = this.params.types['ecom'].options
-      const optionsObject = {}
-      optionsList.forEach(el => {
-        optionsObject[el] = Array.from(this.params.options[el].section)
+      console.log(questionAnswerPairs);
+
+      questionAnswerPairs.forEach(([quest, ans]) => {
+        switch (quest) {
+          case "2":
+            switch (ans) {
+              case "14":
+                this.current_type = "info";
+                break;
+              case "15":
+                break;
+              case "16":
+                break;
+              case "17":
+                break;
+
+              default:
+                break;
+            }
+            break;
+          case "3":
+            switch (ans) {
+              case "4":
+                break;
+              case "5":
+                break;
+              default:
+                break;
+            }
+            break;
+          case "4":
+            break;
+
+          default:
+            break;
+        }
       });
-      for (const key in optionsObject) {
-        let newSection = optionsObject[key].map(key => this.params.section[key])
-        optionsObject[key].section = newSection;
+      if (this.current_type) {
+        this.currentTask = {};
+        const optionsList = this.params.types[this.current_type].options;
+        const optionsObject = {};
+        optionsList.forEach((el) => {
+          optionsObject[el] = Array.from(this.params.options[el].section);
+        });
+        for (const key in optionsObject) {
+          let newSection = optionsObject[key].map(
+            (key) => this.params.section[key]
+          );
+          optionsObject[key].section = newSection;
+        }
+        this.currentTask = optionsObject;
+        this.currentId = task.id;
+        return optionsObject;
       }
-      this.currentTask = optionsObject
-      return optionsObject;
     },
   },
   data() {
     return {
       params: "",
-      current_type: "ecom",
+      current_type: "",
       currentTask: "",
-      tasks: [],
-      errors: [],
+      tasks: "",
     };
   },
 };
@@ -99,13 +136,12 @@ export default {
 }
 .card-wrapper {
   display: flex;
-  @media(max-width: 1024px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
-    &>.el-col-8 {
+    & > .el-col-8 {
       width: 100%;
     }
   }
-  
 }
 </style>
    

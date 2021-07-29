@@ -4,7 +4,7 @@
     <el-col>
       <el-card class="box-card" shadow="always">
         <div slot="header" class="clearfix">
-          <span>Проект № 123</span>
+          <span>Проект № {{id}} </span>
           <el-button style="float: right; padding: 3px 0" type="text">Меню проекта</el-button>
         </div>
         <template v-for="(part, key) in components">
@@ -32,7 +32,6 @@
         </template>
       </el-card>
     </el-col>
-    {{ sections }}
   </div>
 </template>
 
@@ -43,8 +42,8 @@ export default {
       type: Object,
       default: null
     },
-    sections: {
-      type: Object,
+    id: {
+      type: Number,
       default: null
     },
   },

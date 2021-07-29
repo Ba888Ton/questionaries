@@ -5,8 +5,8 @@
     </header>
     <div id="nav">
       <router-link to="/">Home</router-link>
-      <router-link to="/questionary">About</router-link>
-      <router-link to="/configurator">Configurator</router-link>
+      <router-link to="/questionary">Опросник</router-link>
+      <router-link to="/configurator">Конфигуратор</router-link>
       <router-link to="/test">test</router-link>
     </div>
     <router-view/>
