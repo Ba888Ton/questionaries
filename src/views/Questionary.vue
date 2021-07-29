@@ -49,7 +49,7 @@
                     {{ option.answer_value }}
                   </el-radio>
                 </el-radio-group>
-                <ClientForm 
+                <ClientForm
                   v-if="question.id_question === '15'"
                   @contacts-form-submit="contactsFormSubmit($event)"
                 />
@@ -60,7 +60,7 @@
         </el-col>
       </transition>
     </div>
-    {{message}}
+    {{ message }}
   </el-main>
 </template>
 <script>
@@ -109,17 +109,23 @@ export default {
     },
     async contactsFormSubmit(form) {
       try {
+        const loader = this.$loading({fullscreen: true})
         const data = {contacts: form, answers: this.checkList}
         const postForm = await this.$http.post("http://localhost:3000/completed_forms", data)
-        .then(e => this.message = 'Успешно !')
-        this.currentCard += 1
-        setTimeout(() => {
+        .then(() => { 
+          this.message = 'Успешно !'
+          this.currentCard = 0
+          loader.close()
+        })
+        .then(() => setTimeout(() => {
           this.message = ''
           setTimeout(() => {
-            this.$route.push('/')
-          }, 1000);
-        }, 3000);
+            this.$router.push('/')
+          }, 1000)
+        }, 3000))
       } catch (error) {
+        this.currentCard = 0
+        loader.close()
         this.message = 'Что-то пошло не так'
         throw new Error(error)
       }
@@ -134,7 +140,7 @@ export default {
       questions: "",
       answers: "",
       showForm: false,
-      currentCard: 15,
+      currentCard: 1,
       message: ''
     };
   },
@@ -145,7 +151,7 @@ export default {
   background: #fff;
 }
 .transition-box2 {
-  background: $secondary;
+  background: #fff;
 }
 .fade-enter-active,
 .fade-leave-active {

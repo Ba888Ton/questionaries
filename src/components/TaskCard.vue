@@ -1,6 +1,6 @@
 <template>
   <el-col :span="8">
-    <el-card shadow="hover"> 
+    <el-card class="card" shadow="hover"> 
       <slot name="title"></slot>
       <slot></slot>
     </el-card>
@@ -18,5 +18,8 @@ export default {};
   &:last-child {
     margin-bottom: 20px;
   }
+}
+.card {
+  background: #7be2ac61;
 }
 </style>

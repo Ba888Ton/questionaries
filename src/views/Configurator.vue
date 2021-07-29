@@ -1,23 +1,18 @@
 <template>
   <el-main>
     <h1>Поступившие заявки</h1>
-    <el-row :gutter="12">
-      <task-card v-for="card in params.tasks" :key="card.value">
+    <el-row :gutter="12" class="infinite-list-wrapper card-wrapper" style="overflow:auto; max-height: 400px">
+      <task-card v-for="card in tasks" :key="card.id">
         <template v-slot:title>
-          <h3>{{ card.value }}</h3>
+          <h3> Заявка № {{card.id}}</h3>
         </template>
         <div>
-          <el-button style="margin-top: 12px" >Взять в работу</el-button>
+          <el-button style="margin-top: 12px" @click="() => selectTask(card)">Взять в работу</el-button>
         </div>
       </task-card>
     </el-row>
-
     <el-row :gutter="12">
-      <task-table
-        v-if="current_task"
-        :components="components"
-      >
-      </task-table>
+      <task-table v-if="currentTask" :components="currentTask"> </task-table>
     </el-row>
   </el-main>
 </template>
@@ -31,98 +26,86 @@ export default {
     this.getParams();
   },
   computed: {
-    components() {
-      const optionsList = this.params.types[this.current_type].options;
-      const optionsObject = optionsList.reduce((obj, key) => {
-          obj[key] = this.params.components[key]
-          return obj;
-        }, {});
-        for (const key in optionsObject) {
-          let newSection = optionsObject[key].section.reduce((arr, key) => {
-            arr.push(this.params.section[key])
-            return arr
-          },[])
-          optionsObject[key].section = newSection
-        }
-      return optionsObject;
-    },
+    currentType() {
+      return this.params.types[this.currentTask.jjjj].option
+    }
   },
   methods: {
     async getParams() {
       try {
-        const res = await this.$http.get("http://localhost:3000/settings");
-        this.params = res.data;
+        const settings = await this.$http.get("http://localhost:3000/settings");
+        const tasks = await this.$http.get("http://localhost:3000/completed_forms");
+        this.params = settings.data;
+        this.tasks = tasks.data
       } catch (error) {
         console.log("components error", error.response);
       }
+    },
+    selectTask(task) {
+      const values = task.answers.map(answer => {
+        if (answer instanceof Array) {
+          const valuesArray = answer.map(item => item.id_answer)
+          return valuesArray
+        }
+        return answer.id_answer
+      });
+      console.log(values);
+      debugger
+      // values.forEach(item => {
+      //   switch (item) {
+      //     case 'desktop':
+            
+      //       break;
+      //     case 'mobile':
+            
+      //       break;
+        
+      //     default:
+      //       break;
+      //   }
+      // });
+      this.currentTask = {}
+      // const optionsList = this.params.types[this.current_type].options
+      const optionsList = this.params.types['ecom'].options
+      const optionsObject = {}
+      optionsList.forEach(el => {
+        optionsObject[el] = Array.from(this.params.options[el].section)
+      });
+      for (const key in optionsObject) {
+        let newSection = optionsObject[key].map(key => this.params.section[key])
+        optionsObject[key].section = newSection;
+      }
+      this.currentTask = optionsObject
+      return optionsObject;
     },
   },
   data() {
     return {
       params: "",
       current_type: "ecom",
-      current_task: "",
-      show: true,
+      currentTask: "",
+      tasks: [],
       errors: [],
-      email: "",
-      input_platform: "",
-      input: "",
-      active: 1,
-      radio1: "",
-      radio2: "1",
-      percentage: 80,
-      typeValue: "",
-      id: 234,
-      tasks: [
-        {
-          value: "Задача 1",
-          label: "Option1",
-        },
-        {
-          value: "Option2",
-          label: "Option2",
-          button: "Взять в работу",
-        },
-        {
-          value: "Option3",
-          label: "Option3",
-          button: "push me",
-        },
-      ],
-      form: {
-        platform: "",
-        version: [],
-        options: [],
-        settings: [],
-      },
-      cases: {
-        platform: ["mobile", "desktop"],
-        version: {
-          mobile: ["android", "ios"],
-          desktop: ["ecom", "info", "crm", "erp", "bi"],
-        },
-        options: {
-          mobile: ["loyality", "delivery"],
-          desktop: [
-            "admin_panel",
-            "rss",
-            "data_base",
-            "other_module",
-            "user_account",
-          ],
-        },
-        settings: ["cheap", "good", "fast"],
-      },
     };
   },
 };
 </script>
 <style lang="scss">
-  .transition-box {
-    background: #fff;
+.transition-box {
+  background: #fff;
+}
+.transition-box2 {
+  background: #fff;
+}
+.card-wrapper {
+  display: flex;
+  @media(max-width: 1024px) {
+    flex-direction: column;
+    &>.el-col-8 {
+      width: 100%;
+    }
   }
-  .transition-box2 {
-    background: $secondary;
-  }
+  
+}
 </style>
    

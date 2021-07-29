@@ -1,10 +1,13 @@
 <template>
   <div id="app">
+    <header class="header">
+      <img class="logo" src="@/assets/img/logo.png">
+    </header>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/questionary">About</router-link> | 
-      <router-link to="/configurator">Configurator</router-link> | 
-      <router-link to="/test">test</router-link> | 
+      <router-link to="/">Home</router-link>
+      <router-link to="/questionary">About</router-link>
+      <router-link to="/configurator">Configurator</router-link>
+      <router-link to="/test">test</router-link>
     </div>
     <router-view/>
   </div>
@@ -28,14 +31,23 @@ export default {
 
 #nav {
   padding: 30px;
-
+  background: #7be2ac;
   a {
     font-weight: bold;
-    color: #2c3e50;
-
+    color: $secondary;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 40px;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #fff;
     }
   }
+}
+.logo {
+  width: 300px;
+}
+.header {
+  text-align: left;
+  background: #fff;
 }
 </style>

@@ -6,7 +6,8 @@
         "name": "Разработка дизайна для web и мобайл версии",
         "hours": null,
         "section": [
-          "designer"
+          "designer",
+          "analyst"
         ]
       },
       "projectPlanning": {
@@ -31,7 +32,7 @@
         "name": "Разработка БД",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper"
         ]
       },
       "objectModel": {
@@ -39,7 +40,7 @@
         "name": "Разработка объектной модели",
         "hours": null,
         "section": [
-          "analyst"
+          "architect"
         ]
       },
       "authorization": {
@@ -47,7 +48,8 @@
         "name": "Компонент функционала регистрации и авторизации",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper",
+          "frontDeveloper"
         ]
       },
       "reference": {
@@ -55,7 +57,8 @@
         "name": "Компонент рекомендаций",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper",
+          "frontDeveloper"
         ]
       },
       "periodicals": {
@@ -63,7 +66,8 @@
         "name": "Компонент периодики",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper",
+          "frontDeveloper"
         ]
       },
       "userCatalog": {
@@ -71,7 +75,8 @@
         "name": "Компонент каталога пользователя",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper",
+          "frontDeveloper"
         ]
       },
       "rss": {
@@ -79,7 +84,8 @@
         "name": "Компонент RSS",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper",
+          "frontDeveloper"
         ]
       },
       "rssParsing": {
@@ -87,7 +93,8 @@
         "name": "Компонент парсинга созданных RSS Atom",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper",
+          "frontDeveloper"
         ]
       },
       "search": {
@@ -95,7 +102,9 @@
         "name": "Компонент поиска",
         "hours": null,
         "section": [
-          "architect"
+          "architect",
+          "backDeveloper",
+          "frontDeveloper"
         ]
       },
       "multilanguage": {
@@ -103,15 +112,16 @@
         "name": "Многоязычность сайта",
         "hours": null,
         "section": [
-          "analyst"
-        ]
+          "backDeveloper",
+          "frontDeveloper"        ]
       },
       "extractor": {
         "id": 14,
         "name": "Компонент правил извлечения данных",
         "hours": null,
         "section": [
-          "analyst"
+          "architect",
+          "backDeveloper"
         ]
       },
       "notification": {
@@ -119,7 +129,8 @@
         "name": "Модуль уведомлений",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper",
+          "frontDeveloper" 
         ]
       },
       "adminPanel": {
@@ -127,7 +138,8 @@
         "name": "Административная панель",
         "hours": null,
         "section": [
-          "analyst"
+          "backDeveloper",
+          "frontDeveloper" 
         ]
       },
       "devOps": {
@@ -135,7 +147,7 @@
         "name": "DevOps работы (Настройка и установка контуров)",
         "hours": null,
         "section": [
-          "analyst"
+          "Архитектор"
         ]
       },
       "debugging": {
@@ -143,7 +155,7 @@
         "name": "Отладка",
         "hours": null,
         "section": [
-          "analyst"
+          "QAengineer"
         ]
       }
     },
@@ -168,7 +180,7 @@
           "outline"
         ]
       },
-      "erpCrm": {
+      "crm": {
         "id": 3,
         "name": "Системы  CRM / ERP",
         "options": [
@@ -220,37 +232,12 @@
       "teamLead": {
         "name": "Руководитель проекта",
         "defaultRate": 2000
-      }
-    },
-    "tasks": [
-      {
-        "value": "Задача 1",
-        "label": "Option 1",
-        "type": "ecom",
-        "answers": {
-          "111": "a",
-          "222": "b",
-          "333": "c",
-          "444": "a",
-          "555": "b",
-          "666": "c"
-        }
       },
-      {
-        "value": "Задача 2",
-        "label": "Option 2",
-        "button": "Взять в работу",
-        "type": "info"
-      },
-      {
-        "value": "Задача 3",
-        "label": "Option 3",
-        "button": "push me",
-        "type": "erpCrm"
+      "QAengineer": {
+        "name": "Тестировщик",
+        "defaultRate": 2000
       }
-    ],
-    "questions": [],
-    "answers": []
+    }
   },
   "answers_table": [
     {
@@ -345,7 +332,7 @@
     },
     {
       "id_answer": "16",
-      "answer_value": "Корпоративная система  ERP",
+      "answer_value": "Корпоративная система ERP",
       "next_question": "10",
       "id_question": "2"
     },
@@ -683,36 +670,59 @@
     },
     {
       "contacts": {
-        "name": "qweqwe",
-        "surname": "qweqwe",
-        "companyName": "qweqweqwe",
-        "phone": 3423,
+        "name": "123",
+        "surname": "123",
+        "companyName": "123",
+        "phone": 123,
         "desc": ""
       },
-      "answers": [],
-      "id": 3
-    },
-    {
-      "contacts": {
-        "name": "qweqwe",
-        "surname": "qweqwe",
-        "companyName": "qweqwe",
-        "phone": 34234234,
-        "desc": ""
-      },
-      "answers": [],
-      "id": 4
-    },
-    {
-      "contacts": {
-        "name": "dfsafsdf",
-        "surname": "sdfsdf",
-        "companyName": "sdfsdf",
-        "phone": 543535,
-        "desc": ""
-      },
-      "answers": [],
-      "id": 5
+      "answers": [
+        {
+          "id_answer": "1",
+          "answer_value": "desktop",
+          "next_question": "2",
+          "id_question": "1"
+        },
+        {
+          "id_answer": "15",
+          "answer_value": "CRM",
+          "next_question": "9",
+          "id_question": "2"
+        },
+        [
+          {
+            "id_answer": "21",
+            "answer_value": "Панель менеджера",
+            "next_question": "6",
+            "id_question": "9"
+          }
+        ],
+        {
+          "id_answer": "12",
+          "answer_value": "до 500к",
+          "next_question": "12",
+          "id_question": "6"
+        },
+        {
+          "id_answer": "31",
+          "answer_value": "Битрикс",
+          "next_question": "13",
+          "id_question": "12"
+        },
+        {
+          "id_answer": "34",
+          "answer_value": "Joomla",
+          "next_question": "14",
+          "id_question": "13"
+        },
+        {
+          "id_answer": "37",
+          "answer_value": "Нужен дизайн с нуля",
+          "next_question": "15",
+          "id_question": "14"
+        }
+      ],
+      "id": 22
     }
   ]
 }

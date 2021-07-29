@@ -21,7 +21,12 @@
               </el-button>
             </div>
             <table width="100%">
-              <tr v-for="row in part.section" :key="row.name"> <td width="200">{{ row.name }}</td><td>{{ row.defaultRate }}</td></tr>
+              <tr v-for="row in part.section" :key="row.name"> 
+                <td width="200">{{ row.name }}</td>
+                <td>{{ row.defaultRate }}</td>
+                <td>25</td>
+                <td> сумма: {{row.defaultRate * 25}} </td>
+              </tr>
             </table>
           </el-card>
         </template>
