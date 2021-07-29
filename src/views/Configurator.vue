@@ -18,25 +18,29 @@
         </div>
       </task-card>
     </el-row>
-    <el-row :gutter="12">
-      <TaskTable v-if="currentTask" :components="currentTask" :id="currentId" />
+    <el-row v-if="currentTask" :gutter="12">
+      <TaskTable :components="currentTask" :id="currentId" 
+      @reorder-row="reorder($event)" />
+      <!-- <SideMenu :section="params.section" /> -->
     </el-row>
   </el-main>
 </template>
 <script>
 import TaskCard from "../components/TaskCard.vue";
 import TaskTable from "../components/TaskTable.vue";
+import SideMenu from "../components/SideMenu.vue";
+
 
 export default {
-  components: { TaskCard, TaskTable },
+  components: { TaskCard, TaskTable, SideMenu },
   mounted() {
     this.getParams();
   },
-  computed: {
-    currentType() {
-      return this.params.types[this.currentTask.jjjj].option;
-    },
-  },
+  // computed: {
+  //   currentType() {
+  //     return this.params.types[this.currentTask.jjjj].option;
+  //   },
+  // },
   methods: {
     async getParams() {
       try {
@@ -53,16 +57,14 @@ export default {
     selectTask(task) {
       const questionAnswerPairs = task.answers.map((answer) => {
         if (answer instanceof Array) {
-          const valuesArray = answer.map((item) => [
+          const valuesArray = answer.flatMap((item, i) => [
             item.id_question,
             item.id_answer,
-          ]);
-          return [...valuesArray];
+          ])
+          return valuesArray
         }
         return [answer.id_question, answer.id_answer];
       });
-      console.log(questionAnswerPairs);
-
       questionAnswerPairs.forEach(([quest, ans]) => {
         switch (quest) {
           case "2":
@@ -116,6 +118,9 @@ export default {
         return optionsObject;
       }
     },
+    reorder(event) {
+      console.log(event);
+    }
   },
   data() {
     return {

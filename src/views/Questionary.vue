@@ -161,5 +161,11 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+.el-radio.is-bordered,
+.el-checkbox.is-bordered {
+  background: #fff;
+  color: $secondary;
+  border-color: $secondary;
+}
 </style>
    
