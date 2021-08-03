@@ -20,14 +20,16 @@
     </el-row>
     <el-row v-if="currentTask" :gutter="12">
       <TaskTable :components="currentTask" :id="currentId" 
-      @reorder-row="reorder($event)" />
-      <!-- <SideMenu :section="params.section" /> -->
+      @row-reorder="reorder($event)" 
+      @row-delete="deleteEl($event)" 
+      />
+      <!-- <SideMenu :s../components/TaskPage.vue-->
     </el-row>
   </el-main>
 </template>
 <script>
 import TaskCard from "../components/TaskCard.vue";
-import TaskTable from "../components/TaskTable.vue";
+import TaskTable from "../components/TaskPage.vue";
 import SideMenu from "../components/SideMenu.vue";
 
 
@@ -36,11 +38,6 @@ export default {
   mounted() {
     this.getParams();
   },
-  // computed: {
-  //   currentType() {
-  //     return this.params.types[this.currentTask.jjjj].option;
-  //   },
-  // },
   methods: {
     async getParams() {
       try {
@@ -119,7 +116,10 @@ export default {
       }
     },
     reorder(event) {
-      console.log(event);
+      console.log('reorder event::::' + event);
+    },
+    deleteEl(event) {
+      console.log('delete event::::' + event);
     }
   },
   data() {
