@@ -7,10 +7,12 @@
           <span>Проект № {{ id }} </span>
           <div class="buttons">
             <el-button
-              style="padding: 3px 0;
+              style="
+                padding: 3px 0;
                 margin-right: 10px;
                 margin-left: auto;
-                color: green;"
+                color: green;
+              "
               type="text"
               @click="addPartition"
               >Добавить раздел</el-button
@@ -22,9 +24,11 @@
         </div>
         <partition-item
           :key="part.id"
-          v-for="part in partitions"
+          v-for="(part, index) in partitions"
           :part="part"
+          :index="index"
           @delete-partition="deletePartition"
+          @update-partition="updatePartition"
         >
         </partition-item>
       </el-card>
@@ -38,7 +42,7 @@ import PartitionItem from "./PartitionItem.vue";
 import { nanoid } from "nanoid";
 export default {
   components: {
-    name: 'TaskPage',
+    name: "TaskPage",
     PartitionItem,
   },
   props: {
@@ -58,7 +62,7 @@ export default {
           id: 1,
           name: "Разработка дизайна для web и мобайл версии",
           hours: null,
-          employers: [
+          employees: [
             {
               name: "designer",
               type: "designer",
@@ -71,7 +75,7 @@ export default {
           id: 2,
           name: "Проработка требований и написание постановок ТЗ",
           hours: null,
-          employers: [
+          employees: [
             {
               name: "teamLead",
               type: "teamLead",
@@ -90,7 +94,7 @@ export default {
           id: 3,
           name: "Адаптивная и мобильная web верстка",
           hours: null,
-          employers: [
+          employees: [
             {
               name: "analyst",
               type: "analyst",
@@ -112,12 +116,21 @@ export default {
     deletePartition(id) {
       this.partitions = this.partitions.filter((part) => part.id !== id);
     },
+    updatePartition(obj, id) {
+      this.partitions = this.partitions.map((employee, index) => {
+        if (index === id) {
+          employee.employees = obj
+          return employee
+        }
+        return employee
+      });
+    },
     addPartition() {
       this.partitions.push({
         id: nanoid(),
         name: "new",
         hours: null,
-        employers: [],
+        employees: [],
       });
     },
   },

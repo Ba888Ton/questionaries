@@ -2,44 +2,76 @@
   <el-card class="box-card" shadow="hover">
     <div slot="header" class="clearfix">
       <span>Раздел {{ part.name }}</span>
-      <el-button style="float: right; padding: 3px 0" type="text">
-        Меню раздела
-      </el-button>
-      <el-button
-        style="float: right; margin-right: 10px; padding: 3px 0; color: salmon"
-        type="text"
-        @click="$emit('delete-partition', part.id)"
-      >
-        Удалить
-      </el-button>
+      <div class="btn-block">
+        <el-button @click="addEmployee" style="padding: 3px 0" type="text">
+          Добавить исполнителя
+          <div icon="el-icon-top-right"></div>
+        </el-button>
+        <el-button
+          style="float: right; margin-left: 30px; padding: 3px 0; color: salmon"
+          type="text"
+          @click="$emit('delete-partition', part.id)"
+        >
+          Удалить раздел
+        </el-button>
+      </div>
     </div>
-    <el-table :data="part.employers" style="width: 100%">
-      <el-table-column prop="id" label="id" width="180"> </el-table-column>
-      <el-table-column prop="employers" label="Name" width="180">
-      </el-table-column>
-      <el-table-column prop="type" label="type"> </el-table-column>
-      <el-table-column prop="hours" label="hours"> </el-table-column>
-      <el-table-column prop="id" label="actions">
-        <el-button>Удалить</el-button>
-      </el-table-column>
-    </el-table>
+
+    <employees-item
+      :employees="part.employees"
+      :partitionIndex="index"
+      @delete-employee="deleteEmployee"
+    >
+    </employees-item>
   </el-card>
 </template>
 
 <script>
+import { nanoid } from 'nanoid';
+import EmployeesItem from "./EmployeesItem.vue";
 export default {
   name: "PartitionItem",
+  components: {
+    EmployeesItem,
+  },
   props: {
     part: {
       type: Object,
       default: {},
     },
+    index: {
+      type: Number,
+    },
   },
   methods: {
-    updatePartition(id) {},
+    addEmployee(partition) {
+      const uid = nanoid();
+      const addNewEmployee = Object.assign(this.part);
+      addNewEmployee.employees.push({
+        name: "add name",
+        type: "",
+        hours: 0,
+        id: uid,
+      });
+      this.$emit("update-partition", addNewEmployee, partition);
+    },
+    deleteEmployee([partition, employee]) {
+      const redusedEmployees = this.part.employees.filter(
+        (_, index) => index !== employee
+      );
+      this.$emit("update-partition", redusedEmployees, partition);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.box-card {
+  position: relative;
+}
+.btn-block {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
 </style>
