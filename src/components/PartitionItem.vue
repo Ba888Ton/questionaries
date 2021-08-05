@@ -19,8 +19,7 @@
 
     <employees-item
       :employees="part.employees"
-      :partitionIndex="index"
-      @delete-employee="deleteEmployee"
+      @update-employees="updateEmployees"
     >
     </employees-item>
   </el-card>
@@ -38,10 +37,7 @@ export default {
     part: {
       type: Object,
       default: {},
-    },
-    index: {
-      type: Number,
-    },
+    }
   },
   methods: {
     addEmployee(partition) {
@@ -55,13 +51,11 @@ export default {
       });
       this.$emit("update-partition", addNewEmployee, partition);
     },
-    deleteEmployee([partition, employee]) {
-      const redusedEmployees = this.part.employees.filter(
-        (_, index) => index !== employee
-      );
-      this.$emit("update-partition", redusedEmployees, partition);
-    },
+    updateEmployees(updatedEmployees) {
+      this.$emit("update-partition", updatedEmployees, this.part.id);
+    }
   },
+
 };
 </script>
 

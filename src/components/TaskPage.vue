@@ -117,12 +117,12 @@ export default {
       this.partitions = this.partitions.filter((part) => part.id !== id);
     },
     updatePartition(obj, id) {
-      this.partitions = this.partitions.map((employee, index) => {
-        if (index === id) {
-          employee.employees = obj
-          return employee
+      this.partitions = this.partitions.map((partition) => {
+        if (partition.id === id) {
+          partition.employees = obj
+          return partition
         }
-        return employee
+        return partition
       });
     },
     addPartition() {
