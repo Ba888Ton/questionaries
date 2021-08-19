@@ -21,6 +21,11 @@ const routes = [
     component: () => import('../views/Configurator.vue')
   },
   {
+    path: '/question-configurator',
+    name: 'questionConfigurator',
+    component: () => import('../views/QuestionConfigurator.vue')
+  },
+  {
     path: '/test',
     name: 'test',
     component: () => import('../views/test.vue')

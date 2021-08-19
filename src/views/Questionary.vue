@@ -96,10 +96,10 @@ export default {
     async getParams() {
       try {
         const answers = await this.$http.get(
-          "http://localhost:3000/answers_table"
+          "http://localhost:5000/answers_table"
         );
         const questions = await this.$http.get(
-          "http://localhost:3000/questions_table"
+          "http://localhost:5000/questions_table"
         );
         this.answers = answers.data;
         this.questions = questions.data;
@@ -111,7 +111,7 @@ export default {
       try {
         const loader = this.$loading({fullscreen: true})
         const data = {contacts: form, answers: this.checkList}
-        const postForm = await this.$http.post("http://localhost:3000/completed_forms", data)
+        const postForm = await this.$http.post("http://localhost:5000/completed_forms", data)
         .then(() => { 
           this.message = 'Успешно !'
           this.currentCard = 0

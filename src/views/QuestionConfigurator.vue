@@ -1,29 +1,31 @@
 <template>
   <el-main>
-    <h1>Поступившие заявки</h1>
-    <p v-if="!tasks.length">пока ничего нет ...</p>
+    <h1>Список опросников</h1>
+    <p v-if="!quests">пока ничего нет ...</p>
     <el-row
       :gutter="12"
       class="infinite-list-wrapper card-wrapper"
-      style="overflow: auto; max-height: 400px"
+      style="overflow: auto; max-height: 500px"
     >
-      <task-card v-for="card in tasks" :key="card.id">
+      <task-card v-for="quest in quests" :key="quest.id">
         <template v-slot:title>
-          <h3>Заявка № {{ card.id }}</h3>
+          <h3>Опросник {{ quest.name }}</h3>
         </template>
         <div>
-          <el-button style="margin-top: 12px" @click="() => selectTask(card)"
-            >Взять в работу</el-button
+          <el-button 
+            style="margin-top: 12px" 
+            @click="() => selectQuest(quest)"
           >
+            Развернуть
+          </el-button>
         </div>
       </task-card>
     </el-row>
     <el-row v-if="currentTask" :gutter="12">
       <TaskTable :components="currentTask" :id="currentId" 
-      @row-reorder="reorder($event)" 
-      @row-delete="deleteEl($event)" 
+        @row-reorder="reorder($event)" 
+        @row-delete="deleteEl($event)" 
       />
-      <!-- <SideMenu :s../components/TaskPage.vue-->
     </el-row>
   </el-main>
 </template>
@@ -42,14 +44,14 @@ export default {
     async getParams() {
       try {
         const settings = await this.$http.get("http://localhost:5000/settings");
-        const tasks = await this.$http.get(
-          "http://localhost:5000/completed_forms"
-        );
         this.params = settings.data;
-        this.tasks = tasks.data;
+        this.quests = this.params.types
       } catch (error) {
         console.log("components error", error.response);
       }
+    },
+    selectQuest(quest) {
+
     },
     selectTask(task) {
       const questionAnswerPairs = task.answers.map((answer) => {
@@ -127,7 +129,7 @@ export default {
       params: "",
       current_type: "",
       currentTask: "",
-      tasks: "",
+      quests: "",
     };
   },
 };
@@ -141,6 +143,10 @@ export default {
 }
 .card-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  h3 {
+    height: 60px;
+  }
   @media (max-width: 1024px) {
     flex-direction: column;
     & > .el-col-8 {
