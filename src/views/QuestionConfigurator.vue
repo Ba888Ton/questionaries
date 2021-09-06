@@ -21,11 +21,20 @@
         </div>
       </task-card>
     </el-row>
-    <el-row v-if="currentTask" :gutter="12">
-      <TaskTable :components="currentTask" :id="currentId" 
-        @row-reorder="reorder($event)" 
-        @row-delete="deleteEl($event)" 
-      />
+    <el-row>
+      <QuestionTabs />
+    </el-row>
+    <el-row v-if="current_type" :gutter="12">
+      <el-col :span="12">
+        <p v-for="qu in questions" :key="qu.id_question">
+          {{qu.name}}
+        </p>
+      </el-col>
+      <el-col :span="12">
+        <p v-for="qu in answers" :key="qu.id_answer">
+          {{qu.answer_value}}
+        </p>
+      </el-col>
     </el-row>
   </el-main>
 </template>
@@ -33,17 +42,35 @@
 import TaskCard from "../components/TaskCard.vue";
 import TaskTable from "../components/TaskPage.vue";
 import SideMenu from "../components/SideMenu.vue";
+import QuestionTabs from "../components/QuestionTabs.vue";
 
 
 export default {
-  components: { TaskCard, TaskTable, SideMenu },
+  components: { TaskCard, TaskTable, SideMenu, QuestionTabs },
+  data: () => {
+    return {
+      params: '',
+      current_type: '',
+      currentTask: '',
+      quests: '',
+      questions: '',
+      answers: ''
+    };
+  },
   mounted() {
     this.getParams();
+  },
+  computed: {
+    filterByType() {
+      return this.questions.filter() 
+    }
   },
   methods: {
     async getParams() {
       try {
         const settings = await this.$http.get("http://localhost:5000/settings");
+        this.questions = (await this.$http.get("http://localhost:5000/questions_table")).data
+        this.answers = (await this.$http.get("http://localhost:5000/answers_table")).data
         this.params = settings.data;
         this.quests = this.params.types
       } catch (error) {
@@ -51,14 +78,14 @@ export default {
       }
     },
     selectQuest(quest) {
-
+      this.current_type = quest.id
     },
     selectTask(task) {
       const questionAnswerPairs = task.answers.map((answer) => {
         if (answer instanceof Array) {
           const valuesArray = answer.flatMap((item, i) => [
             item.id_question,
-            item.id_answer,
+            item.id_answer
           ])
           return valuesArray
         }
@@ -123,14 +150,6 @@ export default {
     deleteEl(event) {
       console.log('delete event::::' + event);
     }
-  },
-  data() {
-    return {
-      params: "",
-      current_type: "",
-      currentTask: "",
-      quests: "",
-    };
   },
 };
 </script>
