@@ -1,13 +1,13 @@
 <template>
   <el-main>
     <h1>Список опросников</h1>
-    <p v-if="!quests">пока ничего нет ...</p>
+    <p v-if="!allQuests">пока ничего нет ...</p>
     <el-row
       :gutter="12"
       class="infinite-list-wrapper card-wrapper"
       style="overflow: auto; max-height: 500px"
     >
-      <task-card v-for="quest in quests" :key="quest.id">
+      <task-card v-for="quest in allQuests" :key="quest.id">
         <template v-slot:title>
           <h3>Опросник {{ quest.name }}</h3>
         </template>
@@ -21,11 +21,23 @@
         </div>
       </task-card>
     </el-row>
-    <el-row v-if="currentTask" :gutter="12">
-      <TaskTable :components="currentTask" :id="currentId" 
-        @row-reorder="reorder($event)" 
-        @row-delete="deleteEl($event)" 
-      />
+    <el-row :gutter="12">
+      <table>
+        <tr>
+          <td>      
+            <p v-for="qu in questionsTable" :key="qu.id">
+              {{qu.id}}   {{qu.name}}  
+            </p>
+          </td>
+          <td>      
+            <p v-for="an in answersTable" :key="an.id">
+
+               фильтруем по id вопроса
+              {{an.answer_id}}   {{an.answer_value}}  
+            </p>
+          </td>
+        </tr>
+      </table>
     </el-row>
   </el-main>
 </template>
@@ -44,14 +56,20 @@ export default {
     async getParams() {
       try {
         const settings = await this.$http.get("http://localhost:5000/settings");
+        const questionsTable = await this.$http.get("http://localhost:5000/questions_table");
+        const answersTable = await this.$http.get("http://localhost:5000/answers_table");
+        this.questionsTable = questionsTable.data;
+        this.answersTable = answersTable.data;
         this.params = settings.data;
-        this.quests = this.params.types
+        this.allQuests = this.params.types
+        console.log(this.answersTable);
       } catch (error) {
         console.log("components error", error.response);
       }
     },
     selectQuest(quest) {
-
+      console.log(quest);
+      debugger
     },
     selectTask(task) {
       const questionAnswerPairs = task.answers.map((answer) => {
@@ -129,7 +147,9 @@ export default {
       params: "",
       current_type: "",
       currentTask: "",
-      quests: "",
+      allQuests: "",
+      answersTable: "",
+      questionsTable: ""
     };
   },
 };

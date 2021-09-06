@@ -1,10 +1,10 @@
 <template>
-  <el-main>
+  <el-main class="quest_wrapper">
     <h1>Пройдите опрос и мы начнем работать</h1>
     <div style="margin: 20px">
       <transition name="el-fade-in-linear">
         <el-col :span="24">
-          <div class="grid-content bg-purple-dark">
+          <div class="grid-content">
             <div v-for="question in questions" :key="question.id_question">
               <task-card
                 v-if="currentCard === +question.id_question"
@@ -146,7 +146,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .transition-box {
   background: #fff;
 }
@@ -166,6 +166,15 @@ export default {
   background: #fff;
   color: $secondary;
   border-color: $secondary;
+}
+.quest_wrapper {
+  max-width: 1200px;
+  height: 670px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-image: url('../assets/img/card_bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 </style>
    
