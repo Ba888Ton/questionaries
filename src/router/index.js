@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/questionary',
     name: 'Questionary',
-    component: () => import('../views/Questionary.vue')
+    component: () => import('../views/Questionary/Questionary.vue')
   },
   {
     path: '/configurator',

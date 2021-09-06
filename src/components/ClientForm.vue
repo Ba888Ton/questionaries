@@ -6,6 +6,12 @@
     label-width="170px"
     class="ruleForm"
   >
+  <el-row>
+    <el-col :sm="24" :md="12">
+          <el-form-item label="Logo" prop="logo">
+      <div class="dd_logo"></div>
+      <el-input v-model="ruleForm.logo"></el-input>
+    </el-form-item>
     <el-form-item label="Имя" prop="name">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
@@ -33,6 +39,11 @@
         Отправить заявку
       </el-button>
     </el-form-item>
+    </el-col>
+    <el-col :sm="24" :md="12">
+      dfdsfd
+    </el-col>
+  </el-row>
   </el-form>
 </template>
 <script>
@@ -85,7 +96,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .ruleForm {
-  max-width: 800px;
   margin: 0 auto;
+}
+.dd_logo {
+  background: rgba(255, 255, 255, 0.202673);
+  border: 1px dashed #C1C1C1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.101421);
+  border-radius: 4px;
+  flex-basis: 290px;
+  height: 65px;
 }
 </style>

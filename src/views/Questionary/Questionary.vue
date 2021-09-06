@@ -1,6 +1,36 @@
 <template>
+<main class="main">
+  <h1 class="main_title">Заявка на разработку</h1>
+  <div class="qqq">
+    <div class="square">
+      <div class="child"></div>
+    </div>
+  </div>
   <el-main class="quest_wrapper">
-    <h1>Пройдите опрос и мы начнем работать</h1>
+  <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tab-pane label="Опросник на разработку" name="first">
+      <div slot="label" class="custom_tab">Опросник на разработку</div>
+      <div class="title">
+        1 шаг из 10
+      </div>
+      <h2>Опросник: О компании</h2>
+      <ClientForm
+        @contacts-form-submit="contactsFormSubmit($event)"
+      />
+    </el-tab-pane>
+    <el-tab-pane name="second">
+      <div slot="label" class="custom_tab">О компании</div>
+      <ClientForm
+        @contacts-form-submit="contactsFormSubmit($event)"
+      />
+    </el-tab-pane>
+    <el-tab-pane name="third">
+      <div slot="label" class="custom_tab">Вопрос</div>
+      <ClientForm
+        @contacts-form-submit="contactsFormSubmit($event)"
+      />
+    </el-tab-pane>
+  </el-tabs>
     <div style="margin: 20px">
       <transition name="el-fade-in-linear">
         <el-col :span="24">
@@ -62,13 +92,29 @@
     </div>
     {{ message }}
   </el-main>
+</main>
 </template>
 <script>
-import TaskCard from "../components/TaskCard.vue";
+import TaskCard from "../../components/TaskCard.vue";
 import ClientForm from "@/components/ClientForm.vue"
 
 export default {
   name: "Questionary",
+  data() {
+    return {
+      handleChange: "",
+      checkList: [],
+      optionsList: [],
+      errors: [],
+      questions: "",
+      answers: "",
+      showForm: false,
+      currentCard: 1,
+      message: '',
+      activeName: 'first',
+      
+    };
+  },
   components: {
     TaskCard, ClientForm
   },
@@ -131,22 +177,36 @@ export default {
       }
     }
   },
-  data() {
-    return {
-      handleChange: "",
-      checkList: [],
-      optionsList: [],
-      errors: [],
-      questions: "",
-      answers: "",
-      showForm: false,
-      currentCard: 1,
-      message: ''
-    };
-  },
 };
 </script>
 <style lang="scss" scope>
+div {
+  box-sizing: border-box;
+}
+.qqq {
+  height: 100px;
+  border: yellowgreen 1px solid;
+  text-align: center;
+  .square {
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' fill='black'/%3E%3Crect x='1' y='1' width='28' height='28' rx='2' fill='white'/%3E%3Cline x1='1.17678' y1='0.823223' x2='29.1768' y2='28.8232' stroke='black' stroke-width='0.5'/%3E%3Cline x1='29.0598' y1='1.17641' x2='1.17715' y2='29.1764' stroke='black' stroke-width='0.5'/%3E%3Crect x='3.5' y='3.5' width='23' height='23' fill='white' stroke='black'/%3E%3C/svg%3E%0A");
+  }
+}
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+}
+.main_title {
+  color: $black;
+  font-family: PF BeauSans Pro;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: -2px;
+  text-align: left;
+}
 .transition-box {
   background: #fff;
 }
@@ -168,13 +228,54 @@ export default {
   border-color: $secondary;
 }
 .quest_wrapper {
-  max-width: 1200px;
-  height: 670px;
-  margin: 0 auto;
+  min-height: 670px;
   border-radius: 10px;
-  background-image: url('../assets/img/card_bg.png');
+  background-image: url('../../assets/img/card_bg.png');
   background-size: cover;
   background-repeat: no-repeat;
+}
+.step {
+  display: inline-block;
+  width: 300px;
+  background: coral;
+}
+
+.el-tabs__item {
+  background: #323B5D;
+  padding: 0;
+  height: 44px;
+  line-height: 44px;
+  color: #5A5A63;
+  .custom_tab {
+  width: 300px;
+}
+  &.is-active {
+
+    // background-image: url('../../assets/img/arrow.png');
+    // background-position: right center;
+    .custom_tab {
+      color: #fff;
+      background-color: #748EF7;
+      background-image: url('../../assets/img/arrow.jpg');
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+  &:hover {
+    color: #fff;
+    background: #474d64;
+  }
+}
+.el-tabs__active-bar {
+  background-color: #145E79;
+  bottom: -16px;
+}
+.el-tabs__nav-wrap::after {
+ background: #1C2B3B;
+}
+.el-tabs__nav-scroll {
+  padding-bottom: 16px;
 }
 </style>
    
