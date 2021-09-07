@@ -27,6 +27,7 @@ body {
   margin: 0;
   font-size: 1.6rem;
   font-family: 'Source Sans Pro', sans-serif;
+  box-sizing: border-box;
 }
 h1 {
   font-size: 7rem;
@@ -42,6 +43,7 @@ h3 {
 }
 div, p {
   font-size: 1.6rem;
+  box-sizing: border-box;
 }
 /**
  * Render the `main` element consistently in IE.

@@ -175,28 +175,19 @@ export default {
         this.message = 'Что-то пошло не так'
         throw new Error(error)
       }
+    },
+    handleClick() {
+      console.log('click');
     }
   },
 };
 </script>
 <style lang="scss" scope>
-div {
-  box-sizing: border-box;
-}
-.qqq {
-  height: 100px;
-  border: yellowgreen 1px solid;
-  text-align: center;
-  .square {
-    width: 30px;
-    height: 30px;
-    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' fill='black'/%3E%3Crect x='1' y='1' width='28' height='28' rx='2' fill='white'/%3E%3Cline x1='1.17678' y1='0.823223' x2='29.1768' y2='28.8232' stroke='black' stroke-width='0.5'/%3E%3Cline x1='29.0598' y1='1.17641' x2='1.17715' y2='29.1764' stroke='black' stroke-width='0.5'/%3E%3Crect x='3.5' y='3.5' width='23' height='23' fill='white' stroke='black'/%3E%3C/svg%3E%0A");
-  }
-}
+
 .main {
-  max-width: 1200px;
+  max-width: 1140;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2.4rem;
   color: #fff;
 }
 .main_title {
