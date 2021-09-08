@@ -185,7 +185,7 @@ export default {
 <style lang="scss" scope>
 
 .main {
-  max-width: 1140;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 2.4rem;
   color: #fff;
@@ -230,7 +230,9 @@ export default {
   width: 300px;
   background: coral;
 }
-
+.el-tab-pane {
+  text-align: left;
+}
 .el-tabs__item {
   background: #323B5D;
   padding: 0;

@@ -149,7 +149,7 @@ export default {
   letter-spacing: -0.7px;
 }
 .dd_logo {
-  min-height: 100px;
+  min-height: 105px;
   margin-bottom: 30px;
 }
 ::v-deep .el-upload-dragger {

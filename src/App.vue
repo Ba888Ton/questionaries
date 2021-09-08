@@ -28,6 +28,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   font-size: 2rem;
+  background-image: url('./assets/img/light_bg.png');
+  background-size: cover;
 }
 #nav {
   padding: 2rem;
